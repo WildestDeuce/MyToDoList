@@ -1,15 +1,24 @@
 import { useState } from "react";
 
-const [userInput, setUserInput] = useState('');
+const ToDoForm = ({ addTask }) => {
+    const [userInput, setUserInput] = useState('');
 
-const handleChange = (e) => {
-    setUserInput(e.currentTarget.value)
-}
+    const handleChange = (e) => {
+        setUserInput(e.currentTarget.value)
+    }
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-    addTask(userInput);
-    setUserInput('');
-}
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addTask(userInput);
+        setUserInput('');
+    }
 
-<input value={userInput} type='text' onChange={handleChange} placeholder='Enter Something To Do' />
+    return (
+        <form onSubmit={handleSubmit} >
+            <input value={userInput} type='text' onChange={handleChange} placeholder='Enter Something To Do' />
+            <button>Submit</button>
+        </form>
+    );
+};
+
+export default ToDoForm;
